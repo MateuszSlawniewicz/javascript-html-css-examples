@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+</head>
+<body>
+<button onclick="startNewQuiz()">START NEW QUIZ</button>
+<br>
+<form>
+    <label id="question">IT or Pokemon?</label>
+    <br>
+    <input type="button" value="Pokemon" onclick="pokeAnswer()">
+    <br>
+    <input type="button" value="IT" onclick="itAnswer()">
+</form>
+<p id="answer"> Correct/Incorrect</p>
+<a href="#" id="answerurl" target="_blank">Read More</a>
+<br>
+<button onclick="nextQuestion()">NEXT</button>
+<p id="score"></p>
+
+<script src="jspokeapp.js"></script>
+</body>
+</html>
