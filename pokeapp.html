@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiz</title>
+    <link rel="stylesheet" href="stylesforpokeapp.css">
 </head>
 <body>
-<button onclick="startNewQuiz()">START NEW QUIZ</button>
-<br>
-<form>
-    <label id="question">IT or Pokemon?</label>
+<div class="a">
+    <button class="button" onclick="startNewQuiz()">START NEW QUIZ</button>
     <br>
-    <input type="button" value="Pokemon" onclick="pokeAnswer()">
+    <form>
+        <label id="question">IT or Pokemon?</label>
+        <br>
+        <input class="button" type="button" value="Pokemon" onclick="pokeAnswer()">
+        <input class="button" type="button" value="IT" onclick="itAnswer()">
+    </form>
+    <p id="answer"> Correct/Incorrect</p>
+    <a href="#" id="answerurl" target="_blank">Read More</a>
     <br>
-    <input type="button" value="IT" onclick="itAnswer()">
-</form>
-<p id="answer"> Correct/Incorrect</p>
-<a href="#" id="answerurl" target="_blank">Read More</a>
-<br>
-<button onclick="nextQuestion()">NEXT</button>
-<p id="score"></p>
-
-<script src="jspokeapp.js"></script>
+    <button class="button" onclick="nextQuestion()">NEXT</button>
+    <p id="score"></p>
+    <script src="jspokeapp.js"></script>
+</div>
 </body>
 </html>

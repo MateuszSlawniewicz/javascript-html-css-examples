@@ -17,7 +17,6 @@ async function startNewQuiz() {
     }
 }
 
-
 async function getQuestion() {
     const response = await fetch(URL + "quiz/" + idQuiz + "/question");
     if (response.status === 200) {
@@ -50,7 +49,6 @@ async function checkAnswer(answerId) {
         headers: {
             "content-type": "application/json"
         }
-
     };
     const response = await fetch(URL + "quiz/" + idQuiz + "/answer", options);
     if (response.status === 200) {
@@ -58,35 +56,35 @@ async function checkAnswer(answerId) {
         console.log(responsejson.details.url);
         if (responsejson.correct === true) {
             correctAnswer(responsejson);
-        }
-        incorrectAnswer(responsejson);
-
-    }
-
-}
-
-function incorrectAnswer(responsejson) {
-    document.getElementById('answer').innerText = "Incorrect";
-    document.getElementById('answerurl').setAttribute("href", responsejson.details.url);
-}
-
-function correctAnswer(responsejson) {
-    document.getElementById('answer').innerText = "Correct";
-    document.getElementById('answerurl').setAttribute("href", responsejson.details.url);
-}
-
-async function nextQuestion() {
-    if (games === 0) {
-        const response = await fetch(URL + "quiz/" + idQuiz + "/score");
-        if (response.status === 200) {
-            let jsonresponse = await response.json();
-            let quizscore = jsonresponse.score;
-            document.getElementById('score').innerText = "END, your score is: " + quizscore;
+        } else {
+            incorrectAnswer(responsejson);
         }
     }
-    getQuestion();
-
 }
+
+    function incorrectAnswer(responsejson) {
+        document.getElementById('answer').innerText = "Incorrect";
+        document.getElementById('answerurl').setAttribute("href", responsejson.details.url);
+    }
+
+    function correctAnswer(responsejson) {
+        document.getElementById('answer').innerText = "Correct";
+        document.getElementById('answerurl').setAttribute("href", responsejson.details.url);
+    }
+
+    async function nextQuestion() {
+        if (games === 0) {
+            const response = await fetch(URL + "quiz/" + idQuiz + "/score");
+            if (response.status === 200) {
+                let jsonresponse = await response.json();
+                let quizscore = jsonresponse.score;
+                document.getElementById('score').innerText = "END, your score is: " + quizscore;
+            }
+        }
+        document.getElementById('answer').innerText = "Correct/Incorrect";
+        getQuestion();
+
+    }
 
 
 
